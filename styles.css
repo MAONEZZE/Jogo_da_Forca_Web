@@ -1,0 +1,55 @@
+body{
+    margin: 0%;
+    background-color: #020520;
+    color: rgb(255, 251, 251);
+    font-family: 'Segoe UI', sans-serif;
+
+    gap: 30px;
+    display: grid;
+    place-items: center;
+}
+
+input{
+    height: 25px;
+    font-size: 20px;
+    padding: 5px 10px;
+}
+
+.cabecalho{
+    text-align: center;
+}
+
+.quadro-letra{
+    gap: 3px;
+    text-align: center;
+}
+
+.input-botao{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    gap: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.input-txt{
+    border-radius: 10px;
+    width: 35px;
+}
+
+.btn-enviar{
+    height: 39px;
+    border-radius: 10px;
+}
+
+.btn-recomecar{
+    border-radius: 10px;
+    background-color: rgba(240, 248, 255, 0);
+    color: antiquewhite;
+    height: 30px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-style: solid;
+    border-color: antiquewhite;
+}

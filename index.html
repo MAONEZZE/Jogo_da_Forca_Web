@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jogo da Forca</title>
+
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+        
+    </head>
+    <body>
+        <div class="cabecalho">
+            <h2> Seja bem vindo ao jogo da Forca </h2>
+            <h4> Chute alguma letra! </h4>
+        </div>
+
+        <div class="img"> <img src="src/0.png" id="imgForca" ></div>
+
+        <div id="quadro" class="quadro-letra"></div>
+        <span id="textoF" class="texto-final"></span>
+
+        <div id="inputChuteBotao" class="input-botao">
+            <input type="text" id="txtChutado" class="input-txt">
+            <button id="btnEnviar" class="btn-enviar"> <img src="src/enviar.png"></button>
+        </div>
+
+        <div><button id="btnR" class="btn-recomecar">Recomeçar</button></div>
+
+    </body>
+</html>
