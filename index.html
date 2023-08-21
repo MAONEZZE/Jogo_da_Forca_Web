@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jogo da Forca</title>
 
-        <link rel="stylesheet" href="styles.css">
-        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/script.js" defer></script>
+        <script src="js/Forca.js" defer></script>
         
     </head>
     <body>
@@ -15,8 +16,10 @@
             <h4> Chute alguma letra! </h4>
         </div>
 
-        <div class="img"> <img src="src/0.png" id="imgForca" ></div>
-
+        <div class="img"> 
+            <img id="imgForca" class="img-forca" src="src/0.png">
+        </div>
+        
         <div id="quadro" class="quadro-letra"></div>
         <span id="textoF" class="texto-final"></span>
 

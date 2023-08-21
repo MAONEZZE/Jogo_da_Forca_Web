@@ -1,4 +1,5 @@
 class JogoForca{
+    
     btnEnviar = document.getElementById("btnEnviar");
     campoChute = document.getElementById("txtChutado");
     btnR = document.getElementById("btnR");
@@ -21,7 +22,7 @@ class JogoForca{
     sortearPalavra(){
         let palavras = [ "ABACATE", "ABACAXI","ACEROLA", "AÇAÍ", "ARAÇA", "BACABA", "BACURI", "BANANA", "CAJÁ",
         "CAJÚ", "CARAMBOLA", "CUPUAÇU", "GRAVIOLA", "GOIABA", "JABUTICABA", "JENIPAPO" ,"MAÇÃ", 
-        "MANGABA", "MANGA", "MARACUJÁ", "MURICI", "PEQUI",
+        "MANGABA", "MANGA", "MARACUJÁ", "MURICI", "PEQUI", "TAMARINDO", "INGÁ", "ROMÃ", "CAQUI", "JACA",
         "PITANGA", "PITAYA", "SAPOTI", "TANGERINA", "UMBU", "UVA", "UVAIA"];
 
         let i = Math.floor(Math.random() * palavras.length);
@@ -42,7 +43,6 @@ class JogoForca{
             novoInput.style.textAlign = "center";
             novoInput.style.width = `${50/this.palavraSorteada.length}%`
 
-           
             quadro.appendChild(novoInput);
         }
     }
@@ -51,26 +51,66 @@ class JogoForca{
         this.img.src = `src/${this.arrayImg[this.erros]}`;
     }
 
-    verificadorErros(){
-        if(this.erros == 6){
-            this.btnEnviar.disabled = true;
-            this.campoChute.disabled = true;
-            let txt = document.getElementById("textoF");
+    avaliadorPalavrasFinais(acertou){
+        let txt = document.getElementById("textoF");
+        txt.style.display = "block";
 
-            for(let i = 0; i < this.palavraSorteada.length; i++){
-                let quadro = document.getElementById(i);
-                quadro.style.display = "none";
-            }
-
-            txt.style.display = "block";
+        if(acertou){
+            txt.innerText = "Parabéns, você acertou a palavra " + this.palavraSorteada + ", jogue de novo!";
+            txt.style.color = "green";
+        }
+        else{
             txt.innerText = "Infelizmente acabou as suas chances, tente de novo!";
             txt.style.color = "red";
+        }
+    }
+
+    desabilitadorQuadros(acertou){
+        this.btnEnviar.disabled = true;
+        this.campoChute.disabled = true;
+
+        for(let i = 0; i < this.palavraSorteada.length; i++){
+            let quadro = document.getElementById(i);
+            quadro.style.display = "none";
+        }
+
+        this.avaliadorPalavrasFinais(acertou);
+    }
+
+    verificadorAcertos(){
+        let palavraChutada = "";
+        const array = [];
+
+        for(let i = 0; i < this.palavraSorteada.length; i++){
+            let quadro = document.getElementById(i).value;
+            array[i] = quadro;
+        }
+
+        console.log(array)
+
+        for(let i = 0; i < this.palavraSorteada.length; i++){
+            palavraChutada = palavraChutada + array[i];
+        }
+
+        if(palavraChutada == this.palavraSorteada){
+            this.desabilitadorQuadros(true);
+        }
+    }
+
+    verificadorErros(){
+        this.campoChute.value = "";
+        this.alteradorImg();
+        this.erros++;
+
+        if(this.erros == 6){
+            this.desabilitadorQuadros(false);
         }
     }
 
     verificador(){
         let txtChute = this.campoChute.value.toUpperCase();
         let ehValido = false;
+        let auxStr;
 
         for(let i = 0; i < this.palavraSorteada.length; i++){
             
@@ -79,17 +119,16 @@ class JogoForca{
                 ehValido = true;
                 quadro.value = txtChute;
                 this.campoChute.value = "";
+                
             }
         }
 
-        if(ehValido == false){
-            this.campoChute.value = "";
-            this.alteradorImg();
-            this.erros++;
-            console.log(this.erros)
+        if(ehValido){
+        this.verificadorAcertos();
+        }
+        else if(ehValido == false){
             this.verificadorErros();
         }
     }
 }
-
 window.addEventListener("load", () => new JogoForca());
